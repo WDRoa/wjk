@@ -4,8 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "author": "Willie David Roa Hidalgo <willieroa01@gmail.com>",
-  "keywords": ["JavaScript", "Node.js", "React.js", "Vite.js"],
-
+  "keywords": [
+    "JavaScript",
+    "Node.js",
+    "React.js",
+    "Vite.js"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,7 +17,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
