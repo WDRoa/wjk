@@ -8,14 +8,14 @@ const Navbar = () => {
   const activeStyle = 'underline underline-offset-4'
 
   return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-base font-light bg-white'>
       <ul className='flex items-center gap-3'>
-        <li className='font-semibold text-lg'>
+        <li className=' font-black text-lg'>
           <NavLink to='/'>
             WJK
           </NavLink>
         </li>
-        <li>
+        <li className='font-semibold'>
           <NavLink
             to='/'
             className={({ isActive }) =>
@@ -24,7 +24,7 @@ const Navbar = () => {
             All
           </NavLink>
         </li>
-        <li>
+        <li className='font-semibold'>
           <NavLink
             to='/clothes'
             className={({ isActive }) =>
@@ -33,7 +33,7 @@ const Navbar = () => {
             Clothes
           </NavLink>
         </li>
-        <li>
+        <li className='font-semibold'>
           <NavLink
             to='/electronics'
             className={({ isActive }) =>
@@ -42,7 +42,7 @@ const Navbar = () => {
             Electronics
           </NavLink>
         </li>
-        <li>
+        <li className='font-semibold'>
           <NavLink
             to='/furnitures'
             className={({ isActive }) =>
@@ -51,7 +51,7 @@ const Navbar = () => {
             Furnitures
           </NavLink>
         </li>
-        <li>
+        <li className='font-semibold'>
           <NavLink
             to='/toys'
             className={({ isActive }) =>
@@ -60,7 +60,7 @@ const Navbar = () => {
             Toys
           </NavLink>
         </li>
-        <li>
+        <li className='font-semibold'>
           <NavLink
             to='/others'
             className={({ isActive }) =>
@@ -71,10 +71,10 @@ const Navbar = () => {
         </li>
       </ul>
       <ul className='flex items-center gap-3'>
-        <li className='text-black/60'>
+        <li className='text-black/60 font-medium'>
           WDRoa@email.com
         </li>
-        <li>
+        <li className='font-semibold'>
           <NavLink
             to='/my-orders'
             className={({ isActive }) =>
@@ -83,7 +83,7 @@ const Navbar = () => {
             My Orders
           </NavLink>
         </li>
-        <li>
+        <li className='font-semibold'>
           <NavLink
             to='/my-account'
             className={({ isActive }) =>
@@ -92,7 +92,7 @@ const Navbar = () => {
             My Account
           </NavLink>
         </li>
-        <li>
+        <li className='font-semibold'>
           <NavLink
             to='/sing-in'
             className={({ isActive }) =>
