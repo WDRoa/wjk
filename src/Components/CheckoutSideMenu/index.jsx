@@ -22,7 +22,9 @@ const CheckoutSideMenu = () => {
       totalPrice: totalPrice(context.cartProducts)
     }
 
-    context.setOrder([...context.order, orderToAdd])
+    if (context.cartProducts.length > 0) {
+      context.setOrder([...context.order, orderToAdd])      
+    }
     context.setCartProducts([])
     context.setSearchByTitle(null)
   }
