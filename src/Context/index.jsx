@@ -3,26 +3,26 @@ import { createContext, useState, useEffect } from 'react'
 export const ShoppingCartContext = createContext()
 
 export const ShoppingCartProvider = ({children}) => {
-  // Shopping Cart · Increment quantity
+  // Shopping Cart • Increment quantity
   const [count, setCount] = useState(0)
 
-  // Product Detail · Open/Close
+  // Product Detail • Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
   const openProductDetail = () => setIsProductDetailOpen(true)
   const closeProductDetail = () => setIsProductDetailOpen(false)
 
-  // Checkout Side Menu · Open/Close
+  // Checkout Side Menu • Open/Close
   const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
   const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
 
-  // Product Detail · Show product
+  // Product Detail • Show product
   const [productToShow, setProductToShow] = useState({})
 
-  // Shopping Cart · Add products to cart
+  // Shopping Cart • Add products to cart
   const [cartProducts, setCartProducts] = useState([])
 
-  // Shopping Cart · Order
+  // Shopping Cart • Order
   const [order, setOrder] = useState([])
 
   // Get products
@@ -74,6 +74,12 @@ export const ShoppingCartProvider = ({children}) => {
     if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
   }, [items, searchByTitle, searchByCategory])
 
+  const removeProductFromCart = (productId) => {
+    const updatedCart = cartProducts.filter(product => product.id !== productId)
+    setCartProducts(updatedCart)
+    setCount(updatedCart.length)
+  }
+
   return (
     <ShoppingCartContext.Provider value={{
       count,
@@ -96,7 +102,8 @@ export const ShoppingCartProvider = ({children}) => {
       setSearchByTitle,
       filteredItems,
       searchByCategory,
-      setSearchByCategory
+      setSearchByCategory,
+      removeProductFromCart // <-- Agregar la función aquí
     }}>
       {children}
     </ShoppingCartContext.Provider>

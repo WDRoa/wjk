@@ -19,13 +19,19 @@ const Card = (data) => {
     context.closeProductDetail()
   }
 
+  const removeProductsFromCart = (event, productId) => {
+    event.stopPropagation()
+    context.removeProductFromCart(productId)
+  }
+
   const renderIcon = (id) => {
-    const isInCart = context.cartProducts.filter(product => product.id === id).length > 0
+    const isInCart = context.cartProducts.some(product => product.id === id)
 
     if (isInCart) {
       return (
         <div
-          className='absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'>
+          className='absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'
+          onClick={(event) => removeProductsFromCart(event, id)}>
           <CheckIcon className='h-6 w-6 text-white'></CheckIcon>
         </div>
       )
