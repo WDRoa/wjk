@@ -15,19 +15,33 @@ const CheckoutSideMenu = () => {
   }
 
   const handleCheckout = () => {
+    const currentDate = new Date(); 
+    const formattedDate = currentDate.toLocaleString('en-US', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    });
+  
     const orderToAdd = {
-      date: '01.02.23',
+      date: currentDate, 
+      formattedDate: formattedDate, 
       products: context.cartProducts,
       totalProducts: context.cartProducts.length,
       totalPrice: totalPrice(context.cartProducts)
-    }
-
+    };
+  
     if (context.cartProducts.length > 0) {
-      context.setOrder([...context.order, orderToAdd])      
+      context.setOrder([...context.order, orderToAdd]);
     }
-    context.setCartProducts([])
-    context.setSearchByTitle(null)
-  }
+    context.setCartProducts([]);
+    context.setSearchByTitle(null);
+  };
+  
+  
+  
 
   return (
     <aside

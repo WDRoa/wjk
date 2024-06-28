@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "author": "Willie David Roa Hidalgo <willieroa01@gmail.com>",
-  "keywords": [
-    "JavaScript",
+  "keywords": [    
     "Node.js",
     "React.js",
-    "Vite.js"
+    "Vite.js",
+    "TailwindCss"
   ],
   "scripts": {
     "dev": "vite",

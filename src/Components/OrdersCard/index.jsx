@@ -1,13 +1,16 @@
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
 
 const OrdersCard = props => {
-  const { totalPrice, totalProducts } = props
+  const { date, totalPrice, totalProducts } = props
+
+  // Format the date received from props or use current date if not provided
+  const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }) : new Date().toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
 
   return (
     <div className="flex justify-between items-center mb-3 border border-black rounded-lg p-4 w-80">
       <div className='flex justify-between w-full'>
         <p className='flex flex-col'>
-          <span className='font-light'>26.01.24</span>
+          <span className='font-medium'>{formattedDate}</span>
           <span className='font-light'>{totalProducts} articles</span>
         </p>
         <p className='flex items-center gap-2'>

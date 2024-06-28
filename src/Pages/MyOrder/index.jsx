@@ -4,7 +4,7 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 import Layout from '../../Components/Layout'
 import OrderCard from '../../Components/OrderCard'
-import { totalPrice } from '../../utils/index' 
+import { totalPrice } from '../../utils/index'
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext)
@@ -14,14 +14,34 @@ function MyOrder() {
 
   const order = context.order?.[index]
 
+
+  const formatDate = (date) => {
+    const options = {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: false 
+    };
+    return new Date(date).toLocaleDateString('en-US', options);
+  }
+
   return (
     <Layout>
       <div className='flex items-center justify-center relative w-80 mb-6'>
         <Link to='/my-orders' className='absolute left-0'>
           <ChevronLeftIcon className='h-6 w-6 text-black cursor-pointer' />
         </Link>
-        <h1>My Order</h1>
+        <h1 className='font-medium text-xl'>My Order</h1>
       </div>
+      {order && (
+        <div className='flex justify-between items-center w-80 mt-6 px-6'>
+          <span className='font-bold text-md'>Order Date:</span>
+          <span className='text-md'>{formatDate(order.date)}</span>
+        </div>
+      )}
       <div className='flex flex-col w-80'>
         {
           order?.products.map(product => (
@@ -37,7 +57,7 @@ function MyOrder() {
           ))
         }
       </div>
-      <div className='flex justify-between items-center w-80 mt-6 px-6'>
+      <div className='flex justify-between items-center w-80 mt-3 px-6'>
         <span className='font-bold text-xl'>Total:</span>
         <span className='font-medium text-2xl bg-slate-200 dark:bg-gray-500 p-1 rounded right-0'>${totalPrice(order?.products)}</span>
       </div>
