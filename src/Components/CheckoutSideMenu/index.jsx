@@ -10,7 +10,7 @@ const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext)
   
   const handleDelete = (id) => {
-    const filteredProducts = context.cartProducts.filter(product => product.id != id)
+    const filteredProducts = context.cartProducts.filter(product => product.id !== id)
     context.setCartProducts(filteredProducts)
   }
 
@@ -56,7 +56,7 @@ const CheckoutSideMenu = () => {
       </div>
       <div className='px-6 mb-6'>
         <p className='flex justify-between items-center mb-2'>
-          <span className='font-light select-none'>Total:</span>
+          <span className='font-bold select-none'>Total:</span>
           <span className='font-medium text-2xl select-none'>${totalPrice(context.cartProducts)}</span>
         </p>
         <Link to='/my-orders/last'>
@@ -68,5 +68,3 @@ const CheckoutSideMenu = () => {
 }
 
 export default CheckoutSideMenu
-
-

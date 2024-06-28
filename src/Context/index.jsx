@@ -103,7 +103,7 @@ export const ShoppingCartProvider = ({children}) => {
       filteredItems,
       searchByCategory,
       setSearchByCategory,
-      removeProductFromCart // <-- Agregar la función aquí
+      removeProductFromCart 
     }}>
       {children}
     </ShoppingCartContext.Provider>

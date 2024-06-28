@@ -4,12 +4,15 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 import Layout from '../../Components/Layout'
 import OrderCard from '../../Components/OrderCard'
+import { totalPrice } from '../../utils/index' 
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext)
   const currentPath = window.location.pathname
   let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
   if (index === 'last') index = context.order?.length - 1
+
+  const order = context.order?.[index]
 
   return (
     <Layout>
@@ -21,16 +24,22 @@ function MyOrder() {
       </div>
       <div className='flex flex-col w-80'>
         {
-          context.order?.[index]?.products.map(product => (
+          order?.products.map(product => (
             <OrderCard
               key={product.id}
               id={product.id}
               title={product.title}
               imageUrl={product.image}
               price={product.price}
+              productCount={product.count} 
+              disableQuantityControls={true}
             />
           ))
         }
+      </div>
+      <div className='flex justify-between items-center w-80 mt-6 px-6'>
+        <span className='font-bold text-xl'>Total:</span>
+        <span className='font-medium text-2xl bg-slate-200 dark:bg-gray-500 p-1 rounded right-0'>${totalPrice(order?.products)}</span>
       </div>
     </Layout>
   )
