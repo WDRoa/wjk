@@ -1,11 +1,19 @@
-import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
-import { ShoppingCartIcon } from '@heroicons/react/24/solid'
-import { ShoppingCartContext } from '../../Context'
+import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import { ShoppingCartIcon } from '@heroicons/react/24/solid';
+import { ShoppingCartContext } from '../../Context';
 
 const Navbar = () => {
-  const context = useContext(ShoppingCartContext)
-  const activeStyle = 'underline underline-offset-4'
+  const context = useContext(ShoppingCartContext);
+  const activeStyle = 'underline underline-offset-4';
+
+  const toggleCheckoutSideMenu = () => {
+    if (context.isCheckoutSideMenuOpen) {
+      context.closeCheckoutSideMenu();
+    } else {
+      context.openCheckoutSideMenu();
+    }
+  };
 
   return (
     <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-3 px-8 text-base font-light bg-white border border-b-inherit'>
@@ -13,7 +21,7 @@ const Navbar = () => {
         <li className='font-black text-lg select-none'>
           <NavLink 
             to=''
-            onClick={() => context.setSearchByCategory()}
+            onClick={() => context.setSearchByCategory(null)}
             >
             WJK
           </NavLink>
@@ -21,7 +29,7 @@ const Navbar = () => {
         <li className='font-semibold select-none'>
           <NavLink
             to=''
-            onClick={() => context.setSearchByCategory()}
+            onClick={() => context.setSearchByCategory(null)}
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
@@ -100,13 +108,15 @@ const Navbar = () => {
             Sign out
           </NavLink>
         </li>
-        <li className='flex select-none'>
+        <li className='flex items-center select-none' onClick={toggleCheckoutSideMenu}>
           <ShoppingCartIcon className='h-6 w-6 text-black'></ShoppingCartIcon>
-          {context.cartProducts.length}
+          <span className={`ml-0.5 px-2 py-0.5 rounded-full ${context.cartProducts.length > 0 ? 'bg-blue-600 text-white font-normal' : 'bg-transparent font-normal'}`}>
+            {context.cartProducts.length}
+          </span>
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

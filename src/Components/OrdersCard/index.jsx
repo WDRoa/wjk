@@ -3,7 +3,7 @@ import { ChevronRightIcon } from '@heroicons/react/24/solid'
 const OrdersCard = props => {
   const { date, totalPrice, totalProducts } = props
 
-  // Format the date received from props or use current date if not provided
+  
   const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }) : new Date().toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
 
   return (
