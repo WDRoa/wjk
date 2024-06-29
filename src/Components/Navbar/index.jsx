@@ -15,13 +15,18 @@ const Navbar = () => {
     }
   };
 
+  const handleCategoryClick = (category) => {
+    context.setSearchByCategory(category);
+    context.setSearchByTitle(null); 
+  };
+
   return (
     <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-3 px-8 text-base font-light bg-white border border-b-inherit'>
       <ul className='flex items-center gap-3'>
         <li className='font-black text-lg select-none'>
           <NavLink 
             to=''
-            onClick={() => context.setSearchByCategory(null)}
+            onClick={() => handleCategoryClick(null)}
             >
             WJK
           </NavLink>
@@ -29,7 +34,7 @@ const Navbar = () => {
         <li className='font-semibold select-none'>
           <NavLink
             to=''
-            onClick={() => context.setSearchByCategory(null)}
+            onClick={() => handleCategoryClick(null)}
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
@@ -39,7 +44,7 @@ const Navbar = () => {
         <li className='font-semibold select-none'>
           <NavLink
             to='/jewelery'
-            onClick={() => context.setSearchByCategory('jewelery')}
+            onClick={() => handleCategoryClick('jewelery')}
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
@@ -49,7 +54,7 @@ const Navbar = () => {
         <li className='font-semibold select-none'>
           <NavLink
             to='/electronics'
-            onClick={() => context.setSearchByCategory('electronics')}
+            onClick={() => handleCategoryClick('electronics')}
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
@@ -59,7 +64,7 @@ const Navbar = () => {
         <li className='font-semibold select-none'>
           <NavLink
             to='/mens-clothing'
-            onClick={() => context.setSearchByCategory("men's clothing")}
+            onClick={() => handleCategoryClick("men's clothing")}
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
@@ -69,7 +74,7 @@ const Navbar = () => {
         <li className='font-semibold select-none'>
           <NavLink
             to='/womens-clothing'
-            onClick={() => context.setSearchByCategory("women's clothing")}
+            onClick={() => handleCategoryClick("women's clothing")}
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
