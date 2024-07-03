@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "author": "Willie David Roa Hidalgo <willieroa01@gmail.com>",
-  "keywords": [    
+  "keywords": [
     "Node.js",
     "React.js",
     "Vite.js",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.16",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1"

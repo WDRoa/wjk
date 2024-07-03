@@ -5,7 +5,10 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+      gaMaamli: ['"Ga Maamli"', 'sans-serif'],
+    },},
   },
   plugins: [],
 }

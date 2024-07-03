@@ -21,9 +21,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-3 px-8 text-base font-light bg-white border border-b-inherit'>
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-3 px-8 font-light bg-white border border-b-inherit'>
       <ul className='flex items-center gap-3'>
-        <li className='font-black text-lg select-none'>
+        <li className='font-black text-4xl select-none font-gaMaamli hover:text-blue-600'>
           <NavLink 
             to=''
             onClick={() => handleCategoryClick(null)}
@@ -31,7 +31,7 @@ const Navbar = () => {
             WJK
           </NavLink>
         </li>
-        <li className='font-semibold select-none'>
+        <li className='font-semibold select-none hover:text-blue-600'>
           <NavLink
             to=''
             onClick={() => handleCategoryClick(null)}
@@ -41,37 +41,7 @@ const Navbar = () => {
             All
           </NavLink>
         </li>
-        <li className='font-semibold select-none'>
-          <NavLink
-            to='/jewelery'
-            onClick={() => handleCategoryClick('jewelery')}
-            className={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-            Jewelery
-          </NavLink>
-        </li>
-        <li className='font-semibold select-none'>
-          <NavLink
-            to='/electronics'
-            onClick={() => handleCategoryClick('electronics')}
-            className={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-            Electronics
-          </NavLink>
-        </li>
-        <li className='font-semibold select-none'>
-          <NavLink
-            to='/mens-clothing'
-            onClick={() => handleCategoryClick("men's clothing")}
-            className={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-            Men's Clothing
-          </NavLink>
-        </li>
-        <li className='font-semibold select-none'>
+        <li className='font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/womens-clothing'
             onClick={() => handleCategoryClick("women's clothing")}
@@ -81,12 +51,42 @@ const Navbar = () => {
             Women's Clothing
           </NavLink>
         </li>
+        <li className='font-semibold select-none hover:text-blue-600'>
+          <NavLink
+            to='/mens-clothing'
+            onClick={() => handleCategoryClick("men's clothing")}
+            className={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>
+            Men's Clothing
+          </NavLink>
+        </li>
+        <li className='font-semibold select-none hover:text-blue-600'>
+          <NavLink
+            to='/jewelery'
+            onClick={() => handleCategoryClick('jewelery')}
+            className={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>
+            Jewelery
+          </NavLink>
+        </li>
+        <li className='font-semibold select-none hover:text-blue-600'>
+          <NavLink
+            to='/electronics'
+            onClick={() => handleCategoryClick('electronics')}
+            className={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>
+            Electronics
+          </NavLink>
+        </li>
       </ul>
       <ul className='flex items-center gap-3'>
         <li className='text-black/60 font-medium'>
           WDRoa@email.com
         </li>
-        <li className='font-semibold select-none'>
+        <li className='font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/my-orders'
             className={({ isActive }) =>
@@ -95,7 +95,7 @@ const Navbar = () => {
             My Orders
           </NavLink>
         </li>
-        <li className='font-semibold select-none'>
+        <li className='font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/my-account'
             className={({ isActive }) =>
@@ -104,7 +104,7 @@ const Navbar = () => {
             My Account
           </NavLink>
         </li>
-        <li className='font-semibold select-none'>
+        <li className='font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/sign-in'
             className={({ isActive }) =>
@@ -113,8 +113,8 @@ const Navbar = () => {
             Sign out
           </NavLink>
         </li>
-        <li className='flex items-center select-none' onClick={toggleCheckoutSideMenu}>
-          <ShoppingCartIcon className='h-6 w-6 text-black'></ShoppingCartIcon>
+        <li className='flex items-center select-none cursor-pointer' onClick={toggleCheckoutSideMenu}>
+          <ShoppingCartIcon className='h-6 w-6 text-black hover:fill-blue-600 cursor-pointer'></ShoppingCartIcon>
           <span className={`ml-0.5 px-2 py-0.5 rounded-full ${context.cartProducts.length > 0 ? 'bg-blue-600 text-white font-normal' : 'bg-transparent font-normal'}`}>
             {context.cartProducts.length}
           </span>
