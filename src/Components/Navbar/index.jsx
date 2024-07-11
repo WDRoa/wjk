@@ -22,6 +22,10 @@ const Navbar = () => {
 
   return (
     <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-3 px-8 font-light bg-white border border-b-inherit'>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 block lg:hidden cursor-pointer hover:text-blue-600" onClick={context.toggleSideMenu}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      
       <ul className='flex items-center gap-3'>
         <li className='font-black text-4xl select-none font-gaMaamli hover:text-blue-600'>
           <NavLink 
@@ -31,7 +35,7 @@ const Navbar = () => {
             WJK
           </NavLink>
         </li>
-        <li className='font-semibold select-none hover:text-blue-600'>
+        <li className='hidden lg:inline-block font-semibold select-none hover:text-blue-600'>
           <NavLink
             to=''
             onClick={() => handleCategoryClick(null)}
@@ -41,7 +45,7 @@ const Navbar = () => {
             All
           </NavLink>
         </li>
-        <li className='font-semibold select-none hover:text-blue-600'>
+        <li className='hidden lg:inline-block font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/womens-clothing'
             onClick={() => handleCategoryClick("women's clothing")}
@@ -51,7 +55,7 @@ const Navbar = () => {
             Women's Clothing
           </NavLink>
         </li>
-        <li className='font-semibold select-none hover:text-blue-600'>
+        <li className='hidden lg:inline-block font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/mens-clothing'
             onClick={() => handleCategoryClick("men's clothing")}
@@ -61,7 +65,7 @@ const Navbar = () => {
             Men's Clothing
           </NavLink>
         </li>
-        <li className='font-semibold select-none hover:text-blue-600'>
+        <li className='hidden lg:inline-block font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/jewelery'
             onClick={() => handleCategoryClick('jewelery')}
@@ -71,7 +75,7 @@ const Navbar = () => {
             Jewelery
           </NavLink>
         </li>
-        <li className='font-semibold select-none hover:text-blue-600'>
+        <li className='hidden lg:inline-block font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/electronics'
             onClick={() => handleCategoryClick('electronics')}
@@ -83,10 +87,10 @@ const Navbar = () => {
         </li>
       </ul>
       <ul className='flex items-center gap-3'>
-        <li className='text-black/60 font-medium'>
+        <li className='hidden lg:inline-block text-black/60 font-medium'>
           WDRoa@email.com
         </li>
-        <li className='font-semibold select-none hover:text-blue-600'>
+        <li className='hidden lg:inline-block font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/my-orders'
             className={({ isActive }) =>
@@ -95,7 +99,7 @@ const Navbar = () => {
             My Orders
           </NavLink>
         </li>
-        <li className='font-semibold select-none hover:text-blue-600'>
+        <li className='hidden lg:inline-block font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/my-account'
             className={({ isActive }) =>
@@ -104,7 +108,7 @@ const Navbar = () => {
             My Account
           </NavLink>
         </li>
-        <li className='font-semibold select-none hover:text-blue-600'>
+        <li className='hidden lg:inline-block font-semibold select-none hover:text-blue-600'>
           <NavLink
             to='/sign-in'
             className={({ isActive }) =>

@@ -2,7 +2,7 @@ const Footer = () => {
     return (
         <footer className="bg-white border-t border-inherit mt-auto w-full pt-4">
             <div className="container mx-auto text-center">
-                <span className="block font-black text-5xl select-none mb-3 font-gaMaamli dark:text-gray-50">WJK</span>
+                <span className="block font-black text-5xl select-none mb-3 font-gaMaamli">WJK</span>
                 
                 <div className="flex justify-center gap-3 text-black">
                     <span className="cursor-pointer hover:text-blue-600 font-normal select-none">About Us</span>
@@ -13,7 +13,7 @@ const Footer = () => {
                              fill="currentColor"
                              strokeWidth="0"
                              viewBox="0 0 496 512"
-                             className="size-5 md:size-8 fill-black hover:fill-blue-600 dark:fill-gray-50 cursor-pointer"
+                             className="size-5 md:size-8 fill-black hover:fill-blue-600 cursor-pointer"
                              height="1em"
                              width="1em"
                              xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +23,7 @@ const Footer = () => {
                              fill="currentColor"
                              strokeWidth="0"
                              viewBox="0 0 496 512"
-                             className="size-5 md:size-8 fill-black hover:fill-blue-600 dark:fill-gray-50 cursor-pointer "
+                             className="size-5 md:size-8 fill-black hover:fill-blue-600 cursor-pointer "
                              height="1em"
                              width="1em"
                              xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +33,7 @@ const Footer = () => {
                              fill="currentColor"
                              strokeWidth="0"
                              viewBox="0 0 496 512"
-                             className="size-5 md:size-8 fill-black hover:fill-blue-600 dark:fill-gray-50 cursor-pointer"
+                             className="size-5 md:size-8 fill-black hover:fill-blue-600 cursor-pointer"
                              height="1em"
                              width="1em"
                              xmlns="http://www.w3.org/2000/svg">

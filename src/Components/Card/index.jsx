@@ -32,7 +32,7 @@ const Card = (data) => {
         <div
           className='absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'
           onClick={(event) => removeProductsFromCart(event, id)}>
-          <CheckIcon className='h-6 w-6 text-white'></CheckIcon>
+          <CheckIcon className='h-6 w-6 text-white hover:text-blue-600'></CheckIcon>
         </div>
       )
     } else {
@@ -40,7 +40,7 @@ const Card = (data) => {
         <div
           className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
           onClick={(event) => addProductsToCart(event, data.data)}>
-          <PlusIcon className='h-6 w-6 text-black'></PlusIcon>
+          <PlusIcon className='h-6 w-6 text-black hover:text-blue-600'></PlusIcon>
         </div>
       )
     }
@@ -48,7 +48,7 @@ const Card = (data) => {
 
   return (
     <div
-      className='bg-white cursor-pointer w-56 h-60 rounded-lg p-2 hover:border hover:border-black mb-7'
+      className='bg-white cursor-pointer w-56 h-60 rounded-lg p-2 hover:border hover:border-black shadow-xl mx-4 mb-7' 
       onClick={() => showProduct(data.data)}>
       <figure className='relative mb-2 w-full h-4/5 select-none'>
         <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>{data.data.category}</span>

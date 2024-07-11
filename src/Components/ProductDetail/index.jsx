@@ -13,7 +13,7 @@ const ProductDetail = () => {
         <h2 className='font-medium text-xl select-none'>Detail</h2>
         <div>
           <XMarkIcon
-            className='h-6 w-6 text-black cursor-pointer'
+            className='h-6 w-6 text-black cursor-pointer hover:text-blue-600'
             onClick={() => context.closeProductDetail()}></XMarkIcon>
         </div>
       </div> 
@@ -34,4 +34,4 @@ const ProductDetail = () => {
   )
 }
 
-export default ProductDetail
+export default ProductDetail;
