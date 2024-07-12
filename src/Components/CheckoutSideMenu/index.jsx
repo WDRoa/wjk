@@ -8,7 +8,7 @@ import './styles.css';
 
 const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
-  
+
   const handleDelete = (id) => {
     const filteredProducts = context.cartProducts.filter(product => product.id !== id);
     context.setCartProducts(filteredProducts);
@@ -38,23 +38,25 @@ const CheckoutSideMenu = () => {
     }
     context.setCartProducts([]);
     context.setSearchByTitle(null);
+    context.closeCheckoutSideMenu(); 
   };
 
   return (
     <aside
-      className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed right-1 border border-black rounded-lg bg-white`}>
-      <div className='flex justify-between items-center p-6'>
+      className={`checkout-side-menu fixed right-1 bottom-2 border border-black rounded-lg bg-white ${context.isCheckoutSideMenuOpen ? 'checkout-side-menu-open' : 'checkout-side-menu-closed'}`}>
+      <div className="checkout-side-menu-header flex justify-between items-center">
         <h2 className='font-medium text-xl select-none'>My Order</h2>
-        <div>
-          <XMarkIcon
-            className='h-6 w-6 text-black cursor-pointer hover:text-blue-600'
-            onClick={() => context.closeCheckoutSideMenu()}></XMarkIcon>
-        </div>
+        <XMarkIcon
+          className='h-6 w-6 text-black cursor-pointer hover:text-blue-600'
+          onClick={() => context.closeCheckoutSideMenu()}
+        />
       </div>
-      <div className='px-6 overflow-y-scroll flex-1'>
+      <div className='checkout-side-menu-content'>
         {
           context.cartProducts.length === 0 ? (
-            <div className='flex items-center justify-center  h-5/6'><p className='select-none text-gray-500'>Add products to shopping cart</p></div>
+            <div className='flex items-center justify-center h-5/6'>
+              <p className='select-none text-gray-500'>Add products to shopping cart</p>
+            </div>
           ) : (
             context.cartProducts.map(product => (
               <OrderCard
@@ -71,13 +73,13 @@ const CheckoutSideMenu = () => {
       </div>
       {
         context.cartProducts.length > 0 && (
-          <div className='px-6 mb-6'>
+          <div className='checkout-side-menu-footer'>
             <p className='flex justify-between items-center mb-2'>
               <span className='font-bold select-none'>Total:</span>
               <span className='font-medium text-2xl select-none'>${totalPrice(context.cartProducts)}</span>
             </p>
             <Link to='/my-orders/last'>
-              <button className='bg-black py-3 text-white w-full rounded-lg select-none hover:bg-blue-600' onClick={handleCheckout}>Checkout</button>
+              <button className='bg-black py-1 text-white w-full rounded-lg select-none hover:bg-blue-600 font-bold text-lg' onClick={handleCheckout}>CHECKOUT</button>
             </Link>
           </div>
         )

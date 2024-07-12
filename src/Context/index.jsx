@@ -6,21 +6,66 @@ export const ShoppingCartProvider = ({children}) => {
   // Shopping Cart • Increment quantity
   const [count, setCount] = useState(0);
 
-    // SideMenu • Open/Close
+  // SideMenu • Open/Close
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
-  const openSideMenu = () => setIsSideMenuOpen(true);
+  const openSideMenu = () => {
+    setIsSideMenuOpen(true);
+    setIsProductDetailOpen(false);
+    setIsCheckoutSideMenuOpen(false);
+  };
   const closeSideMenu = () => setIsSideMenuOpen(false);
-  const toggleSideMenu = () => setIsSideMenuOpen(!isSideMenuOpen);
+  const toggleSideMenu = () => {
+    setIsSideMenuOpen(!isSideMenuOpen);
+    if (!isSideMenuOpen) {
+      openSideMenu();
+    } else {
+      closeSideMenu();
+    }
+  };
 
   // Product Detail • Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
-  const openProductDetail = () => setIsProductDetailOpen(true);
+  const openProductDetail = () => {
+    setIsProductDetailOpen(true);
+    setIsSideMenuOpen(false);
+    setIsCheckoutSideMenuOpen(false);
+  };
   const closeProductDetail = () => setIsProductDetailOpen(false);
 
   // Checkout Side Menu • Open/Close
   const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
-  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+  const openCheckoutSideMenu = () => {
+    setIsCheckoutSideMenuOpen(true);
+    setIsProductDetailOpen(false);
+    setIsSideMenuOpen(false);
+  };
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
+
+  // Close all menus
+  const closeAllMenus = () => {
+    closeSideMenu();
+    closeProductDetail();
+    closeCheckoutSideMenu();
+  };
+
+  // Add event listener for clicks outside of menus
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        !event.target.closest('.side-menu') &&
+        !event.target.closest('.product-detail') &&
+        !event.target.closest('.checkout-side-menu')
+      ) {
+        closeAllMenus();
+      }
+    };
+
+    document.addEventListener('mouseup', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mouseup', handleClickOutside);
+    };
+  }, []);
 
   // Product Detail • Show product
   const [productToShow, setProductToShow] = useState({});
