@@ -23,13 +23,13 @@ const OrderCard = ({ id, title, imageUrl, price, handleDelete, productCount = 1,
 
   let renderXMarkIcon
   if (handleDelete) {
-    renderXMarkIcon = <XMarkIcon onClick={() => handleDelete(id)} className='h-6 w-6 text-black cursor-pointer hover:text-blue-600'></XMarkIcon>
+    renderXMarkIcon = <XMarkIcon onClick={() => handleDelete(id)} className='h-6 w-6 text-gray-700 cursor-pointer hover:text-blue-600 dark:text-gray-300'></XMarkIcon>
   }
 
   return (
-    <div className="flex shadow-lg justify-between items-center mb-3 pr-2">
+    <div className="flex shadow-lg justify-between items-center mb-3 pr-2 rounded-lg dark:border-gray-600 border">
       <div className='flex items-center gap-2'>
-        <figure className='w-20 h-20 select-none'>
+        <figure className='w-20 h-20 select-none rounded-lg border dark:bg-white'>
           <img className='w-20 h-20 min-w-20 object-contain rounded-md p-2' src={imageUrl} alt={title} />
         </figure>
         <div className='flex flex-col'>
@@ -38,14 +38,14 @@ const OrderCard = ({ id, title, imageUrl, price, handleDelete, productCount = 1,
             <div className='flex items-center gap-2 mt-1'>
               <button
                 onClick={decreaseProductCount}
-                className='bg-black hover:bg-blue-600 py-3 text-white rounded-lg font-black w-6 h-6 flex justify-center items-center select-none'
+                className='bg-gray-600 hover:bg-blue-600 py-3 text-white rounded-lg font-black w-6 h-6 flex justify-center items-center select-none'
               >
                 -
               </button>
-              <span className='select-none flex items-center justify-center w-6 h-6 bg-slate-200 dark:bg-gray-500'>{count}</span>
+              <span className='select-none flex items-center justify-center w-6 h-6 bg-blue-600 text-white '>{count}</span>
               <button
                 onClick={increaseProductCount}
-                className='bg-black hover:bg-blue-600 py-3 text-white rounded-lg font-bold w-6 h-6 flex justify-center items-center select-none'
+                className='bg-gray-600 hover:bg-blue-600 py-3 text-white rounded-lg font-bold w-6 h-6 flex justify-center items-center select-none dark:bg-gray-600 dark:text-gray-300'
               >
                 +
               </button>

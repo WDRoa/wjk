@@ -1,7 +1,7 @@
 .product-detail {
   width: 360px;
   height: 450px;
-  top: 67px;  
+  top: 70px;  
   transition: transform 0.3s ease, opacity 0.3s ease;
   max-height: 100vh;
   overflow: hidden;

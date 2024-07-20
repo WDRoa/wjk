@@ -1,10 +1,10 @@
 const Footer = () => {
     return (
-        <footer className="bg-white border-t border-inherit mt-auto w-full pt-4">
-            <div className="container mx-auto text-center">
+        <footer className="bg-white border-t border-inherit mt-auto w-full pt-4 dark:bg-black dark:text-gray-300">
+            <div className="container flex flex-col mx-auto text-center">
                 <span className="block font-black text-5xl select-none mb-3 font-gaMaamli">WJK</span>
                 
-                <div className="flex justify-center gap-3 text-black">
+                <div className="flex justify-center gap-3 text-black dark:text-gray-300">
                     <span className="cursor-pointer hover:text-blue-600 font-normal select-none">About Us</span>
                     <span className="cursor-pointer hover:text-blue-600 font-normal select-none mb-1">Contact Us</span>
                     <span className="cursor-pointer hover:text-blue-600 font-normal select-none">Feedback</span>
@@ -13,7 +13,7 @@ const Footer = () => {
                              fill="currentColor"
                              strokeWidth="0"
                              viewBox="0 0 496 512"
-                             className="size-5 md:size-8 fill-black hover:fill-blue-600 cursor-pointer"
+                             className="size-5 md:size-8 fill-gray-600 hover:fill-blue-600 cursor-pointer dark:fill-gray-700"
                              height="1em"
                              width="1em"
                              xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +23,7 @@ const Footer = () => {
                              fill="currentColor"
                              strokeWidth="0"
                              viewBox="0 0 496 512"
-                             className="size-5 md:size-8 fill-black hover:fill-blue-600 cursor-pointer "
+                             className="size-5 md:size-8 fill-gray-600 hover:fill-blue-600 cursor-pointer dark:fill-gray-700"
                              height="1em"
                              width="1em"
                              xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +33,7 @@ const Footer = () => {
                              fill="currentColor"
                              strokeWidth="0"
                              viewBox="0 0 496 512"
-                             className="size-5 md:size-8 fill-black hover:fill-blue-600 cursor-pointer"
+                             className="size-5 md:size-8 fill-gray-600 hover:fill-blue-600 cursor-pointer dark:fill-gray-700"
                              height="1em"
                              width="1em"
                              xmlns="http://www.w3.org/2000/svg">
@@ -42,11 +42,11 @@ const Footer = () => {
                     </div>
                 </div>
                 
-                <hr className="w-full bg-gray-400 h-0.5" /> 
-                <p className="text-black font-normal mt-1">&copy; {new Date().getFullYear()} WJK Inc. All rights reserved.</p>
-                <p className="mb-1">
-                    <a href="#" className="text-black hover:text-blue-600 font-normal select-none">Privacy Policy</a> | 
-                    <a href="#" className="text-black hover:text-blue-600 font-normal select-none"> Terms of Service</a>
+                <hr className="self-center  w-11/12 md:w-full bg-gray-400 h-0.5" /> 
+                <p className="text-black font-normal mt-1 dark:text-gray-300">&copy; {new Date().getFullYear()} WJK Inc. All rights reserved.</p>
+                <p className="mb-1 text-black font-normal select-none dark:text-gray-300">
+                    <a href="#" className="hover:text-blue-600">Privacy Policy</a> | 
+                    <a href="#" className="hover:text-blue-600"> Terms of Service</a>
                 </p>
             </div>
         </footer>

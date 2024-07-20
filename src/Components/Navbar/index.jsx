@@ -21,8 +21,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-3 px-8 font-light bg-white border border-b-inherit'>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 block lg:hidden cursor-pointer hover:text-blue-600" onClick={context.toggleSideMenu}>
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-3 px-8 font-light bg-white border border-b-inherit dark:bg-black dark:text-gray-300 dark:border-x-0 transition-colors duration-500'>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 block lg:hidden cursor-pointer text-gray-600 hover:text-blue-600 dark:text-gray-700" onClick={context.toggleSideMenu}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
       </svg>
       
@@ -87,7 +87,7 @@ const Navbar = () => {
         </li>
       </ul>
       <ul className='flex items-center gap-3'>
-        <li className='hidden lg:inline-block text-black/60 font-medium'>
+        <li className='hidden lg:inline-block text-black/60 font-medium dark:text-gray-400'>
           WDRoa@email.com
         </li>
         <li className='hidden lg:inline-block font-semibold select-none hover:text-blue-600'>
@@ -118,7 +118,7 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li className='flex items-center select-none cursor-pointer' onClick={toggleCheckoutSideMenu}>
-          <ShoppingCartIcon className='h-6 w-6 text-black hover:fill-blue-600 cursor-pointer'></ShoppingCartIcon>
+          <ShoppingCartIcon className='h-6 w-6 text-gray-600 hover:fill-blue-600 cursor-pointer dark:fill-gray-700'></ShoppingCartIcon>
           <span className={`ml-0.5 px-2 py-0.5 rounded-full ${context.cartProducts.length > 0 ? 'bg-blue-600 text-white font-normal' : 'bg-transparent font-normal'}`}>
             {context.cartProducts.length}
           </span>

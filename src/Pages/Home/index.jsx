@@ -16,7 +16,7 @@ function Home() {
       )
     } else {
       return (
-        <div>We don't have anything :(</div>
+        <div className='dark:text-gray-300'>We don't have anything :(</div>
       )
     }
   }
@@ -24,12 +24,12 @@ function Home() {
   return (
     <Layout>
       <div className='flex items-center justify-center relative w-80 mb-4 mx-auto'>
-        <h1 className='font-medium text-xl'>Exclusive Products</h1>
+        <h1 className='font-medium text-xl dark:text-gray-300'>Exclusive Products</h1>
       </div>
       <input
         type="text"
         placeholder='Search a product'
-        className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none mx-auto block'
+        className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none mx-auto block shadow-lg z-10 dark:bg-black dark:border-white dark:text-gray-300'
         onChange={(event) => context.setSearchByTitle(event.target.value)} />
       <div className='flex justify-center'>
         <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg'>

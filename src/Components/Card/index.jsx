@@ -30,17 +30,17 @@ const Card = (data) => {
     if (isInCart) {
       return (
         <div
-          className='absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'
+          className='absolute top-0 right-0 flex justify-center items-center bg-gray-600 w-7 h-7 rounded-full m-2 p-1'
           onClick={(event) => removeProductsFromCart(event, id)}>
-          <CheckIcon className='h-6 w-6 text-white hover:text-blue-600'></CheckIcon>
+          <CheckIcon className='h-6 w-6 text-green-500 hover:text-white'></CheckIcon>
         </div>
       )
     } else {
       return (
         <div
-          className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+          className='absolute top-0 right-0 flex justify-center items-center bg-gray-600 w-7 h-7 rounded-full m-2 p-1'
           onClick={(event) => addProductsToCart(event, data.data)}>
-          <PlusIcon className='h-6 w-6 text-black hover:text-blue-600'></PlusIcon>
+          <PlusIcon className=' text-white hover:text-green-500'></PlusIcon>
         </div>
       )
     }
@@ -48,14 +48,14 @@ const Card = (data) => {
 
   return (
     <div
-      className='bg-white cursor-pointer w-56 h-60 rounded-lg p-2 hover:border hover:border-black shadow-xl mx-4 mb-7' 
+      className='bg-white cursor-pointer w-56 h-60 rounded-lg p-2  hover:border-black border shadow-xl mx-4 mb-7 z-10 dark:bg-gray-800 dark:hover:border-white dark:border-black' 
       onClick={() => showProduct(data.data)}>
-      <figure className='relative mb-2 w-full h-4/5 select-none'>
+      <figure className='relative mb-2 w-full h-4/5 dark:bg-white p-3 rounded-lg select-none border'>
         <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>{data.data.category}</span>
-        <img loading='lazy' className='max-w-full max-h-full object-cover rounded-lg' src={data.data.image} alt={data.data.title} />
+        <img loading='lazy' className='w-full h-full object-contain rounded-lg ' src={data.data.image} alt={data.data.title} />
         {renderIcon(data.data.id)}
       </figure>
-      <p className='flex justify-around'>
+      <p className='flex justify-around dark:text-gray-300'>
         <span className='text-sm font-light truncate'>{data.data.title}</span>
         <span className='text-lg font-medium select-none'>${data.data.price}</span>
       </p>

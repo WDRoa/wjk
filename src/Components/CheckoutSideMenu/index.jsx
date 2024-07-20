@@ -43,11 +43,11 @@ const CheckoutSideMenu = () => {
 
   return (
     <aside
-      className={`checkout-side-menu fixed right-1 bottom-2 border border-black rounded-lg bg-white ${context.isCheckoutSideMenuOpen ? 'checkout-side-menu-open' : 'checkout-side-menu-closed'}`}>
+      className={`checkout-side-menu fixed right-1 border border-black rounded-lg bg-white ${context.isCheckoutSideMenuOpen ? 'checkout-side-menu-open' : 'checkout-side-menu-closed'} z-20 dark:border-white dark:bg-black dark:text-gray-300`}>
       <div className="checkout-side-menu-header flex justify-between items-center">
         <h2 className='font-medium text-xl select-none'>My Order</h2>
         <XMarkIcon
-          className='h-6 w-6 text-black cursor-pointer hover:text-blue-600'
+          className='h-7 w-7 bg-gray-600 rounded-2xl text-white cursor-pointer hover:text-blue-600 dark:bg-gray-600 dark:text-gray-300'
           onClick={() => context.closeCheckoutSideMenu()}
         />
       </div>
@@ -79,7 +79,7 @@ const CheckoutSideMenu = () => {
               <span className='font-medium text-2xl select-none'>${totalPrice(context.cartProducts)}</span>
             </p>
             <Link to='/my-orders/last'>
-              <button className='bg-black py-1 text-white w-full rounded-lg select-none hover:bg-blue-600 font-bold text-lg' onClick={handleCheckout}>CHECKOUT</button>
+              <button className='bg-gray-600 py-1 text-white w-full rounded-lg select-none hover:text-green-600 font-bold text-lg dark:bg-gray-700 dark:text-gray-300' onClick={handleCheckout}>Checkout</button>
             </Link>
           </div>
         )

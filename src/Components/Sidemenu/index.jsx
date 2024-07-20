@@ -15,7 +15,7 @@ const SideMenu = () => {
 
     return (
         <aside 
-            className={`side-menu ml-1 flex flex-col fixed border border-black rounded-lg bg-white p-3 lg:hidden ${context.isSideMenuOpen ? 'side-menu-open' : 'side-menu-closed'}`}
+            className={`side-menu ml-1 flex flex-col fixed border border-black rounded-lg bg-white p-3 lg:hidden z-20 dark:border-white dark:bg-black dark:text-gray-300 ${context.isSideMenuOpen ? 'side-menu-open' : 'side-menu-closed'}`}
         >
             <p className='font-bold text-xl select-none mb-2'>Categories</p>
             <ul className='pl-3'>
@@ -72,7 +72,7 @@ const SideMenu = () => {
             </ul>
             <p className='font-bold text-xl select-none mb-2 mt-4'>Account</p>
             <ul className='pl-3'>
-                <li className='text-black/60 font-medium mb-1'>
+                <li className='text-black/60 font-medium mb-1 dark:text-gray-400'>
                     WDRoa@email.com
                 </li>
                 <li className='font-semibold select-none hover:text-blue-600 mb-1'>
