@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import Layout from '../../Components/Layout'
 import Card from '../../Components/Card'
+import SkeletonCard from '../../Components/SkeletonCard'
 import ProductDetail from '../../Components/ProductDetail'
 import { ShoppingCartContext } from '../../Context'
 
@@ -8,17 +9,17 @@ function Home() {
   const context = useContext(ShoppingCartContext)
 
   const renderView = () => {
-    if (context.filteredItems?.length > 0) {
+    if (context.filteredItems === null) {      
+      return Array.from({ length: 16 }).map((_, index) => (
+        <SkeletonCard key={index} />
+      ))
+    } else if (context.filteredItems?.length > 0) {
       return (
         context.filteredItems?.map(item => (
           <Card key={item.id} data={item} />
         ))
       )
-    } else {
-      return (
-        <div className='dark:text-gray-300'>We don't have anything :(</div>
-      )
-    }
+    } 
   }
 
   return (
