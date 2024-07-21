@@ -55,7 +55,7 @@ const Card = (data) => {
         <img loading='lazy' className='w-full h-full object-contain rounded-lg ' src={data.data.image} alt={data.data.title} />
         {renderIcon(data.data.id)}
       </figure>
-      <p className='flex justify-around dark:text-gray-300'>
+      <p className='flex justify-around items-center dark:text-gray-300'>
         <span className='text-sm font-light truncate'>{data.data.title}</span>
         <span className='text-lg font-medium select-none'>${data.data.price}</span>
       </p>

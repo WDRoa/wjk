@@ -87,6 +87,7 @@ export const ShoppingCartProvider = ({children}) => {
   const [searchByCategory, setSearchByCategory] = useState(localStorage.getItem('searchByCategory') || null);
 
   useEffect(() => {
+    setItems(null);  // Clear items before fetching
     fetch('https://fakestoreapi.com/products')
       .then(response => response.json())
       .then(data => setItems(data));
@@ -119,7 +120,9 @@ export const ShoppingCartProvider = ({children}) => {
   };
 
   useEffect(() => {
-    if (searchByTitle && searchByCategory) {
+    if (items === null) {
+      setFilteredItems(null);
+    } else if (searchByTitle && searchByCategory) {
       setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory));
     } else if (searchByTitle && !searchByCategory) {
       setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory));

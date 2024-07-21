@@ -9,7 +9,7 @@ function Home() {
   const context = useContext(ShoppingCartContext)
 
   const renderView = () => {
-    if (context.filteredItems === null) {      
+    if (context.items === null) {      
       return Array.from({ length: 16 }).map((_, index) => (
         <SkeletonCard key={index} />
       ))
