@@ -29,7 +29,10 @@ const ProductDetail = () => {
       className={`${context.isProductDetailOpen ? 'product-detail-open' : 'product-detail-closed'} product-detail flex-col fixed right-1 border border-black rounded-lg bg-white z-20 dark:bg-black dark:border-white dark:text-gray-300`}>
       <div className='flex justify-between items-center p-6'>
         <h2 className='font-medium text-xl select-none dark:text-gray-300'>Detail</h2>
-        <XMarkIcon
+        <XMarkIcon tabIndex={0} 
+        onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { context.closeProductDetail();
+        }
+      }}
           className='h-7 w-7 bg-gray-600 rounded-2xl text-white cursor-pointer hover:text-blue-600 dark:bg-gray-700 dark:text-gray-300'
           onClick={() => context.closeProductDetail()}
         />
@@ -49,7 +52,7 @@ const ProductDetail = () => {
         <div className='mt-5 flex justify-center'>
           {isInCart ? (
             <button
-              className='bg-gray-600 py-1 text-green-600 w-full rounded-lg select-none hover:text-gray-300 font-bold text-lg dark:bg-gray-800 dark:text-green-600'
+              className='bg-gray-600 py-1 text-green-600 w-full rounded-lg select-none hover:text-gray-300 font-bold text-lg dark:bg-gray-800'
               onClick={removeProductFromCartFromDetail}>
               <CheckIcon className='h-6 w-6 inline-block mr-2' /> Already in Cart
             </button>

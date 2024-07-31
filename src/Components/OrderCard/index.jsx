@@ -23,7 +23,7 @@ const OrderCard = ({ id, title, imageUrl, price, handleDelete, productCount = 1,
 
   let renderXMarkIcon
   if (handleDelete) {
-    renderXMarkIcon = <XMarkIcon onClick={() => handleDelete(id)} className='h-6 w-6 text-gray-700 cursor-pointer hover:text-blue-600 dark:text-gray-300'></XMarkIcon>
+    renderXMarkIcon = <XMarkIcon tabIndex={0} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { handleDelete(id) } }}  onClick={() => handleDelete(id)} className='h-6 w-6 text-gray-700 cursor-pointer hover:text-blue-600 dark:text-gray-300'></XMarkIcon>
   }
 
   return (

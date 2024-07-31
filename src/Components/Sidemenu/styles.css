@@ -1,6 +1,6 @@
 .side-menu {
   width: 260px;
-  height: 380px;
+  height: 315px;
   top: 70px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }

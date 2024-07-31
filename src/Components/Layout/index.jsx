@@ -25,6 +25,39 @@ const Layout = ({ children }) => {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const scrollAmount = 40; 
+      switch (event.key) {
+        case 'ArrowUp':
+          window.scrollBy(0, -scrollAmount);
+          break;
+        case 'ArrowDown':
+          window.scrollBy(0, scrollAmount);
+          break;
+        case 'PageUp':
+          window.scrollBy(0, -window.innerHeight);
+          break;
+        case 'PageDown':
+          window.scrollBy(0, window.innerHeight);
+          break;
+        case 'Home':
+          window.scrollTo(0, 0);
+          break;
+        case 'End':
+          window.scrollTo(0, document.body.scrollHeight);
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   const toggleDarkMode = () => {
     if (darkMode === 'dark') {
       setDarkMode('light');
@@ -41,7 +74,7 @@ const Layout = ({ children }) => {
     } else if (darkMode === 'light') {
       return <SunIcon className="w-6 h-6 text-yellow-400" />;
     } else {
-      return <ComputerDesktopIcon className="w-4 h-4  text-black" />;
+      return <ComputerDesktopIcon className="w-4 h-4 text-black" />;
     }
   };
 

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { ShoppingCartContext } from '../../Context';
 import OrderCard from '../../Components/OrderCard';
@@ -8,6 +8,7 @@ import './styles.css';
 
 const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
+  const navigate = useNavigate();
 
   const handleDelete = (id) => {
     const filteredProducts = context.cartProducts.filter(product => product.id !== id);
@@ -39,6 +40,7 @@ const CheckoutSideMenu = () => {
     context.setCartProducts([]);
     context.setSearchByTitle(null);
     context.closeCheckoutSideMenu(); 
+    navigate('/my-orders/last');
   };
 
   return (
@@ -49,6 +51,12 @@ const CheckoutSideMenu = () => {
         <XMarkIcon
           className='h-7 w-7 bg-gray-600 rounded-2xl text-white cursor-pointer hover:text-blue-600 dark:bg-gray-600 dark:text-gray-300'
           onClick={() => context.closeCheckoutSideMenu()}
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              context.closeCheckoutSideMenu();
+            }
+          }}
         />
       </div>
       <div className='checkout-side-menu-content'>
@@ -78,8 +86,8 @@ const CheckoutSideMenu = () => {
               <span className='font-bold select-none'>Total:</span>
               <span className='font-medium text-2xl select-none'>${totalPrice(context.cartProducts)}</span>
             </p>
-            <Link to='/my-orders/last'>
-              <button className='bg-gray-600 py-1 text-white w-full rounded-lg select-none hover:text-green-600 font-bold text-lg dark:bg-gray-700 dark:text-gray-300' onClick={handleCheckout}>Checkout</button>
+            <Link to='/my-orders/last' onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { handleCheckout() } }}>
+              <button className='bg-gray-600 py-1 text-white w-full rounded-lg select-none hover:text-green-600 font-bold text-lg dark:bg-gray-700 dark:text-gray-300' onClick={handleCheckout} >Checkout</button>
             </Link>
           </div>
         )

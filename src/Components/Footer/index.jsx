@@ -5,9 +5,9 @@ const Footer = () => {
                 <span className="block font-black text-5xl select-none mb-3 font-gaMaamli">WJK</span>
                 
                 <div className="flex justify-center gap-3 text-black dark:text-gray-300">
-                    <span className="cursor-pointer hover:text-blue-600 font-normal select-none">About Us</span>
-                    <span className="cursor-pointer hover:text-blue-600 font-normal select-none mb-1">Contact Us</span>
-                    <span className="cursor-pointer hover:text-blue-600 font-normal select-none">Feedback</span>
+                    <span tabIndex={0} className="cursor-pointer hover:text-blue-600 font-normal select-none">About Us</span>
+                    <span tabIndex={0} className="cursor-pointer hover:text-blue-600 font-normal select-none mb-1">Contact Us</span>
+                    <span tabIndex={0} className="cursor-pointer hover:text-blue-600 font-normal select-none">Feedback</span>
                     <div className="flex gap-4 mb-1">
                         <a href="https://github.com/WDRoa" target="_blank"><svg stroke="currentColor"
                              fill="currentColor"

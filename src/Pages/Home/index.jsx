@@ -29,9 +29,12 @@ function Home() {
       </div>
       <input
         type="text"
-        placeholder='Search a product'
-        className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none mx-auto block shadow-lg z-10 dark:bg-black dark:border-white dark:text-gray-300'
-        onChange={(event) => context.setSearchByTitle(event.target.value)} />
+        id="search-product"
+        name="search"
+        placeholder="Search a product"
+        className="rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none mx-auto block shadow-lg z-10 dark:bg-black dark:border-white dark:text-gray-300"
+        onChange={(event) => context.setSearchByTitle(event.target.value)}
+      />
       <div className='flex justify-center'>
         <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg'>
           {renderView()}
