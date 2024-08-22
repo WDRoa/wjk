@@ -80,6 +80,30 @@ const Layout = ({ children }) => {
 
   return (
     <div className="flex flex-col min-h-screen transition-colors duration-500 dark:bg-black">
+      <style jsx global>{`
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+        .dark ::-webkit-scrollbar-track {
+          background: #2d2d2d;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+          background: #555;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+          background: #333;
+        }
+      `}</style>
       <button
         onClick={toggleDarkMode}
         className="p-1 m-2 bg-white dark:bg-gray-700 text-black dark:text-white rounded fixed top-16 right-2 hover:bg-blue-600"

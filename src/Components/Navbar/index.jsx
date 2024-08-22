@@ -186,7 +186,7 @@ const Navbar = () => {
             }
           }}
         >
-          <ShoppingCartIcon className='h-6 w-6 text-gray-600 hover:fill-blue-600 cursor-pointer dark:fill-gray-700'></ShoppingCartIcon>
+          <ShoppingCartIcon className='h-6 w-6 text-gray-600 hover:fill-blue-600 cursor-pointer'></ShoppingCartIcon>
           <span className={`ml-0.5 px-2 py-0.5 rounded-full ${context.cartProducts.length > 0 ? 'bg-blue-600 text-white font-normal' : 'bg-transparent font-normal'}`}>
             {context.cartProducts.length}
           </span>

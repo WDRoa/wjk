@@ -13,8 +13,6 @@ const ProductDetail = () => {
       context.setCount(context.count + 1);
       context.setCartProducts([...context.cartProducts, context.productToShow]);
     }
-    
-    
   };
 
   const removeProductFromCartFromDetail = () => {
@@ -38,7 +36,7 @@ const ProductDetail = () => {
         />
       </div>
       <div className='flex flex-col overflow-y-auto p-4'>
-        <figure className='select-none p-4 bg-white rounded-lg'>
+        <figure className='select-none p-4 bg-white rounded-lg border'>
           <img
             className='w-full h-full '
             src={context.productToShow.image}

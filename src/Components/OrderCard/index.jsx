@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react'
-import { XMarkIcon } from '@heroicons/react/24/solid'
+import { XMarkIcon, PlusIcon, MinusIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 
 const OrderCard = ({ id, title, imageUrl, price, handleDelete, productCount = 1, disableQuantityControls = false }) => {
@@ -40,14 +40,15 @@ const OrderCard = ({ id, title, imageUrl, price, handleDelete, productCount = 1,
                 onClick={decreaseProductCount}
                 className='bg-gray-600 hover:bg-blue-600 py-3 text-white rounded-lg font-black w-6 h-6 flex justify-center items-center select-none'
               >
-                -
+                <MinusIcon className='h-4 w-4'>
+                </MinusIcon>
               </button>
               <span className='select-none flex items-center justify-center w-6 h-6 bg-blue-600 text-white '>{count}</span>
               <button
                 onClick={increaseProductCount}
-                className='bg-gray-600 hover:bg-blue-600 py-3 text-white rounded-lg font-bold w-6 h-6 flex justify-center items-center select-none dark:bg-gray-600 dark:text-gray-300'
-              >
-                +
+                className='bg-gray-600 hover:bg-blue-600 py-3 text-white rounded-lg font-bold w-6 h-6 flex justify-center items-center select-none dark:bg-gray-600 dark:text-gray-300'>
+                <PlusIcon className='h-4 w-4'>
+                </PlusIcon>
               </button>
             </div>
           )}
