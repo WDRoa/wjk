@@ -1,15 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
-  darkMode: 'selector',
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  darkMode: "selector",
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-      gaMaamli: ['"Ga Maamli"', 'sans-serif'],
-    },},
+        gaMaamli: ["Ga Maamli", "sans-serif"]
+      }
+    }
   },
-  plugins: [],
-}
+  plugins: []
+};

@@ -1,34 +1,34 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from "react";
 
 export const ShoppingCartContext = createContext();
 
 export const initializeLocalStorage = () => {
-  const accountInLocalStorage = localStorage.getItem('account')
-  const signOutInLocalStorage = localStorage.getItem('sign-out')
-  let parsedAccount
-  let parsedSignOut
+  const accountInLocalStorage = localStorage.getItem("account");
+  const signOutInLocalStorage = localStorage.getItem("sign-out");
+  let parsedAccount;
+  let parsedSignOut;
 
   if (!accountInLocalStorage) {
-    localStorage.setItem('account', JSON.stringify({}))
-    parsedAccount = {}
+    localStorage.setItem("account", JSON.stringify({}));
+    parsedAccount = {};
   } else {
-    parsedAccount = JSON.parse(accountInLocalStorage)
+    parsedAccount = JSON.parse(accountInLocalStorage);
   }
 
   if (!signOutInLocalStorage) {
-    localStorage.setItem('sign-out', JSON.stringify(false))
-    parsedSignOut = false
+    localStorage.setItem("sign-out", JSON.stringify(false));
+    parsedSignOut = false;
   } else {
-    parsedSignOut = JSON.parse(signOutInLocalStorage)
+    parsedSignOut = JSON.parse(signOutInLocalStorage);
   }
-}
+};
 
-export const ShoppingCartProvider = ({children}) => {
+export const ShoppingCartProvider = ({ children }) => {
   // My account
-  const [account, setAccount] = useState({})
+  const [account, setAccount] = useState({});
 
   // Sign out
-  const [signOut, setSignOut] = useState(false)
+  const [signOut, setSignOut] = useState(false);
 
   // Shopping Cart • Increment quantity
   const [count, setCount] = useState(0);
@@ -79,18 +79,18 @@ export const ShoppingCartProvider = ({children}) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        !event.target.closest('.side-menu') &&
-        !event.target.closest('.product-detail') &&
-        !event.target.closest('.checkout-side-menu')
+        !event.target.closest(".side-menu") &&
+        !event.target.closest(".product-detail") &&
+        !event.target.closest(".checkout-side-menu")
       ) {
         closeAllMenus();
       }
     };
 
-    document.addEventListener('mouseup', handleClickOutside);
+    document.addEventListener("mouseup", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mouseup', handleClickOutside);
+      document.removeEventListener("mouseup", handleClickOutside);
     };
   }, []);
 
@@ -111,34 +111,42 @@ export const ShoppingCartProvider = ({children}) => {
   const [searchByTitle, setSearchByTitle] = useState(null);
 
   // Get products by category
-  const [searchByCategory, setSearchByCategory] = useState(localStorage.getItem('searchByCategory') || null);
+  const [searchByCategory, setSearchByCategory] = useState(
+    localStorage.getItem("searchByCategory") || null
+  );
 
   useEffect(() => {
-    setItems(null);  // Clear items before fetching
-    fetch('https://fakestoreapi.com/products')
-      .then(response => response.json())
-      .then(data => setItems(data));
+    setItems(null); // Clear items before fetching
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => setItems(data));
   }, []);
 
   const filteredItemsByTitle = (items, searchByTitle) => {
-    return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()));
+    return items?.filter((item) =>
+      item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+    );
   };
 
   const filteredItemsByCategory = (items, searchByCategory) => {
-    return items?.filter(item => item.category.toLowerCase() === searchByCategory.toLowerCase());
+    return items?.filter(
+      (item) => item.category.toLowerCase() === searchByCategory.toLowerCase()
+    );
   };
 
   const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
-    if (searchType === 'BY_TITLE') {
+    if (searchType === "BY_TITLE") {
       return filteredItemsByTitle(items, searchByTitle);
     }
 
-    if (searchType === 'BY_CATEGORY') {
+    if (searchType === "BY_CATEGORY") {
       return filteredItemsByCategory(items, searchByCategory);
     }
 
-    if (searchType === 'BY_TITLE_AND_CATEGORY') {
-      return filteredItemsByCategory(items, searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()));
+    if (searchType === "BY_TITLE_AND_CATEGORY") {
+      return filteredItemsByCategory(items, searchByCategory).filter((item) =>
+        item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+      );
     }
 
     if (!searchType) {
@@ -150,11 +158,17 @@ export const ShoppingCartProvider = ({children}) => {
     if (items === null) {
       setFilteredItems(null);
     } else if (searchByTitle && searchByCategory) {
-      setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory));
+      setFilteredItems(
+        filterBy("BY_TITLE_AND_CATEGORY", items, searchByTitle, searchByCategory)
+      );
     } else if (searchByTitle && !searchByCategory) {
-      setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory));
+      setFilteredItems(
+        filterBy("BY_TITLE", items, searchByTitle, searchByCategory)
+      );
     } else if (!searchByTitle && searchByCategory) {
-      setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory));
+      setFilteredItems(
+        filterBy("BY_CATEGORY", items, searchByTitle, searchByCategory)
+      );
     } else {
       setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory));
     }
@@ -167,7 +181,9 @@ export const ShoppingCartProvider = ({children}) => {
   }, [items, searchByCategory]);
 
   const removeProductFromCart = (productId) => {
-    const updatedCart = cartProducts.filter(product => product.id !== productId);
+    const updatedCart = cartProducts.filter(
+      (product) => product.id !== productId
+    );
     setCartProducts(updatedCart);
     setCount(updatedCart.length);
   };
@@ -175,45 +191,47 @@ export const ShoppingCartProvider = ({children}) => {
   const updateSearchByCategory = (category) => {
     setSearchByCategory(category);
     if (category) {
-      localStorage.setItem('searchByCategory', category);
+      localStorage.setItem("searchByCategory", category);
     } else {
-      localStorage.removeItem('searchByCategory');
+      localStorage.removeItem("searchByCategory");
     }
   };
 
   return (
-    <ShoppingCartContext.Provider value={{
-      count,
-      setCount,
-      isSideMenuOpen,
-      openSideMenu,
-      closeSideMenu,
-      toggleSideMenu,
-      openProductDetail,
-      closeProductDetail,
-      isProductDetailOpen,
-      productToShow,
-      setProductToShow,
-      cartProducts,
-      setCartProducts,
-      isCheckoutSideMenuOpen,
-      openCheckoutSideMenu,
-      closeCheckoutSideMenu,
-      order,
-      setOrder,
-      items,
-      setItems,
-      searchByTitle,
-      setSearchByTitle,
-      filteredItems,
-      searchByCategory,
-      setSearchByCategory: updateSearchByCategory,
-      removeProductFromCart,
-      account,
-      setAccount,
-      signOut,
-      setSignOut 
-    }}>
+    <ShoppingCartContext.Provider
+      value={{
+        count,
+        setCount,
+        isSideMenuOpen,
+        openSideMenu,
+        closeSideMenu,
+        toggleSideMenu,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow,
+        cartProducts,
+        setCartProducts,
+        isCheckoutSideMenuOpen,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
+        order,
+        setOrder,
+        items,
+        setItems,
+        searchByTitle,
+        setSearchByTitle,
+        filteredItems,
+        searchByCategory,
+        setSearchByCategory: updateSearchByCategory,
+        removeProductFromCart,
+        account,
+        setAccount,
+        signOut,
+        setSignOut,
+      }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );

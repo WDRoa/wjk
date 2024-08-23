@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "author": "Willie David Roa Hidalgo <willieroa01@gmail.com>",
+  "license": "UNLICENSED",
   "keywords": [
     "Node.js",
     "React.js",
