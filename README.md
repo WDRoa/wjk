@@ -5,7 +5,7 @@ E-commerce or Virtual Store
 
 Hello! 🙂 I am **Willie David Roa (WDRoa)**😎, and I welcome you to the **WJK codebase**. 😊 A project initially created to be modeled in my professional portfolio, 😉 in order to help me get my first job as a software developer. 🙈
 
-I do not want to deny that I have the illusion that later on, I will use this project to be the official site of one of my companies. 🙈 When that time comes and I decide to work on this project with more colleagues, I will take care 👌🏼of adding the corresponding features to this file. Such as:
+Although this project has a lot to improve, I do not want to deny that I have the illusion that later on, I will use it to be the official site of one of my companies. 🙈 When that time comes and I decide to work on this project with more colleagues, I will take care 👌🏼of adding the corresponding features to this file. Such as:
 
 - *Necessary information to quickly understand how the project works and contribute to it effectively. This includes installation instructions, configuration, dependencies, how to run the project and maintain it, how to run tests, technologies used, etc.*
 
