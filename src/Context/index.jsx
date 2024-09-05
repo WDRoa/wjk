@@ -30,16 +30,9 @@ export const ShoppingCartProvider = ({ children }) => {
   // Sign out
   const [signOut, setSignOut] = useState(false);
 
-  // Shopping Cart • Increment quantity
-  const [count, setCount] = useState(0);
-
   // SideMenu • Open/Close
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
-  const openSideMenu = () => {
-    setIsSideMenuOpen(true);
-    setIsProductDetailOpen(false);
-    setIsCheckoutSideMenuOpen(false);
-  };
+  const openSideMenu = () => setIsSideMenuOpen(true);
   const closeSideMenu = () => setIsSideMenuOpen(false);
   const toggleSideMenu = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
@@ -52,20 +45,12 @@ export const ShoppingCartProvider = ({ children }) => {
 
   // Product Detail • Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
-  const openProductDetail = () => {
-    setIsProductDetailOpen(true);
-    setIsSideMenuOpen(false);
-    setIsCheckoutSideMenuOpen(false);
-  };
+  const openProductDetail = () => setIsProductDetailOpen(true);
   const closeProductDetail = () => setIsProductDetailOpen(false);
 
   // Checkout Side Menu • Open/Close
   const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
-  const openCheckoutSideMenu = () => {
-    setIsCheckoutSideMenuOpen(true);
-    setIsProductDetailOpen(false);
-    setIsSideMenuOpen(false);
-  };
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
 
   // Close all menus
@@ -77,7 +62,7 @@ export const ShoppingCartProvider = ({ children }) => {
 
   // Add event listener for clicks outside of menus
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = event => {
       if (
         !event.target.closest(".side-menu") &&
         !event.target.closest(".product-detail") &&
@@ -89,9 +74,7 @@ export const ShoppingCartProvider = ({ children }) => {
 
     document.addEventListener("mouseup", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("mouseup", handleClickOutside);
-    };
+    return () => document.removeEventListener("mouseup", handleClickOutside);
   }, []);
 
   // Product Detail • Show product
@@ -106,6 +89,13 @@ export const ShoppingCartProvider = ({ children }) => {
   // Get products
   const [items, setItems] = useState(null);
   const [filteredItems, setFilteredItems] = useState(null);
+  
+  useEffect(() => {
+    setItems(null); // Clear items before fetching
+    fetch("https://fakestoreapi.com/products")
+      .then(response => response.json())
+      .then(data => setItems(data));
+  }, []);
 
   // Get products by title
   const [searchByTitle, setSearchByTitle] = useState(null);
@@ -114,24 +104,13 @@ export const ShoppingCartProvider = ({ children }) => {
   const [searchByCategory, setSearchByCategory] = useState(
     localStorage.getItem("searchByCategory") || null
   );
-
-  useEffect(() => {
-    setItems(null); // Clear items before fetching
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => setItems(data));
-  }, []);
-
+  
   const filteredItemsByTitle = (items, searchByTitle) => {
-    return items?.filter((item) =>
-      item.title.toLowerCase().includes(searchByTitle.toLowerCase())
-    );
+    return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()));
   };
 
   const filteredItemsByCategory = (items, searchByCategory) => {
-    return items?.filter(
-      (item) => item.category.toLowerCase() === searchByCategory.toLowerCase()
-    );
+    return items?.filter(item => item.category.toLowerCase() === searchByCategory.toLowerCase());
   };
 
   const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
@@ -144,7 +123,7 @@ export const ShoppingCartProvider = ({ children }) => {
     }
 
     if (searchType === "BY_TITLE_AND_CATEGORY") {
-      return filteredItemsByCategory(items, searchByCategory).filter((item) =>
+      return filteredItemsByCategory(items, searchByCategory).filter(item =>
         item.title.toLowerCase().includes(searchByTitle.toLowerCase())
       );
     }
@@ -180,15 +159,14 @@ export const ShoppingCartProvider = ({ children }) => {
     }
   }, [items, searchByCategory]);
 
-  const removeProductFromCart = (productId) => {
+  const removeProductFromCart = productId => {
     const updatedCart = cartProducts.filter(
-      (product) => product.id !== productId
+      product => product.id !== productId
     );
     setCartProducts(updatedCart);
-    setCount(updatedCart.length);
   };
 
-  const updateSearchByCategory = (category) => {
+  const updateSearchByCategory = category => {
     setSearchByCategory(category);
     if (category) {
       localStorage.setItem("searchByCategory", category);
@@ -198,10 +176,7 @@ export const ShoppingCartProvider = ({ children }) => {
   };
 
   return (
-    <ShoppingCartContext.Provider
-      value={{
-        count,
-        setCount,
+    <ShoppingCartContext.Provider value={{        
         isSideMenuOpen,
         openSideMenu,
         closeSideMenu,

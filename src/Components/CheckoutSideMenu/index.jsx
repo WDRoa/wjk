@@ -10,8 +10,8 @@ const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
   const navigate = useNavigate();
 
-  const handleDelete = (id) => {
-    const filteredProducts = context.cartProducts.filter((product) => product.id !== id);
+  const handleDelete = id => {
+    const filteredProducts = context.cartProducts.filter(product => product.id !== id);
     context.setCartProducts(filteredProducts);
   };
 
@@ -28,7 +28,7 @@ const CheckoutSideMenu = () => {
 
     const orderToAdd = {
       date: currentDate,
-      formattedDate: formattedDate,
+      formattedDate,
       products: context.cartProducts,
       totalProducts: context.cartProducts.length,
       totalPrice: totalPrice(context.cartProducts),
@@ -45,11 +45,9 @@ const CheckoutSideMenu = () => {
 
   return (
     <aside
-      className={`checkout-side-menu fixed right-1 border border-black rounded-lg bg-white ${
-        context.isCheckoutSideMenuOpen
-          ? "checkout-side-menu-open"
-          : "checkout-side-menu-closed"
-      } z-20 dark:border-white dark:bg-black dark:text-gray-300`}
+      className={`checkout-side-menu fixed right-1 border border-black rounded-lg bg-white 
+        ${context.isCheckoutSideMenuOpen ? "checkout-side-menu-open" : "checkout-side-menu-closed"} 
+        z-20 dark:border-white dark:bg-black dark:text-gray-300`}
     >
       <div className="checkout-side-menu-header flex justify-between items-center">
         <h2 className="font-medium text-xl select-none">My Order</h2>
@@ -65,22 +63,21 @@ const CheckoutSideMenu = () => {
         />
       </div>
       <div className="checkout-side-menu-content">
-        {context.cartProducts.length === 0 ? (
-          <div className="flex items-center justify-center h-5/6">
-            <p className="select-none text-gray-500">Add products to shopping cart</p>
-          </div>
-        ) : (
-          context.cartProducts.map((product) => (
-            <OrderCard
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              imageUrl={product.image}
-              price={product.price}
-              handleDelete={handleDelete}
-            />
-          ))
-        )}
+        {context.cartProducts.length === 0  ? (<div className="flex items-center justify-center h-5/6">
+                                                <p className="select-none text-gray-500">Add products to shopping cart</p>
+                                               </div>) 
+
+                                            : (context.cartProducts.map(product => (
+                                                <OrderCard
+                                                  key={product.id}
+                                                  id={product.id}
+                                                  title={product.title}
+                                                  imageUrl={product.image}
+                                                  price={product.price}
+                                                  handleDelete={handleDelete}
+                                                />))
+                                              )
+        }
       </div>
       {context.cartProducts.length > 0 && (
         <div className="checkout-side-menu-footer">
@@ -92,7 +89,7 @@ const CheckoutSideMenu = () => {
           </p>
           <Link
             to="/my-orders/last"
-            onKeyDown={(event) => {
+            onKeyDown={event => {
               if (event.key === "Enter" || event.key === " ") {
                 handleCheckout();
               }

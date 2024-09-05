@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
     }, [darkMode]);
 
     useEffect(() => {
-        const handleKeyDown = (event) => {
+        const handleKeyDown = event => {
             const scrollAmount = 40;
             switch (event.key) {
                 case "ArrowUp":

@@ -17,17 +17,17 @@ const MyAccount = () => {
     } else if (name === "email" && !/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(value)) {
       error = "Please enter a valid email address";
     }
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
     return error;
   };
 
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
+  const handleBlur = event => {
+    const { name, value } = event.target;
     validateField(name, value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = event => {
+    event.preventDefault();
     const formData = new FormData(form.current);
     const data = {
       name: formData.get("name"),

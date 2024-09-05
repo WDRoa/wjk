@@ -61,7 +61,7 @@ const SignIn = () => {
     handleSignIn();
   };
 
-  const maskEmail = (email) => {
+  const maskEmail = email => {
     if (!email) return "";
     const [firstPart, lastPart] = email.split("@");
     const maskedFirstPart = firstPart.slice(0, 3);
@@ -69,7 +69,7 @@ const SignIn = () => {
     return `${maskedFirstPart}*****${maskedLastPart}`;
   };
 
-  const maskPassword = (password) => {
+  const maskPassword = password => {
     if (!password) return "";
     return "*****";
   };
@@ -85,13 +85,13 @@ const SignIn = () => {
     return error;
   };
 
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
+  const handleBlur = evento => {
+    const { name, value } = evento.target;
     validateField(name, value);
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = evento => {
+    const { name, value } = evento.target;
     setFormValues(prevValues => ({ ...prevValues, [name]: value }));
     validateField(name, value);
   };
@@ -181,8 +181,8 @@ const SignIn = () => {
           </div>
           <button
             className="bg-gray-600 py-1 text-white w-full rounded-lg select-none hover:text-green-600 font-bold text-lg dark:bg-gray-700 dark:text-gray-300 mb-6"
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={event => {
+              event.preventDefault();
               createAnAccount();
             }}
             disabled={isDisabled}

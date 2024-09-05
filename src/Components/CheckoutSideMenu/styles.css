@@ -4,7 +4,6 @@
   top: 70px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   max-height: 100vh;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }

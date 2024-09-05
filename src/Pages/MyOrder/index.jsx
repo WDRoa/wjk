@@ -14,7 +14,7 @@ const MyOrder = () => {
 
   const order = context.order?.[index];
 
-  const formatDate = (date) => {
+  const formatDate = date => {
     const options = {
       day: "2-digit",
       month: "short",
@@ -42,7 +42,7 @@ const MyOrder = () => {
         </div>
       )}
       <div className="flex flex-col w-80 md:w-96 dark:text-gray-300">
-        {order?.products.map((product) => (
+        {order?.products.map(product => (
           <OrderCard
             key={product.id}
             id={product.id}

@@ -34,7 +34,7 @@ const Navbar = () => {
     }
   };
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = category => {
     context.setSearchByCategory(category);
     context.setSearchByTitle(null);
   };
@@ -99,7 +99,7 @@ const Navbar = () => {
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-3 px-8 font-light bg-white border border-b-inherit dark:bg-black dark:text-gray-300 dark:border-x-0 transition-colors duration-500">
       <svg
         tabIndex={0}
-        onKeyDown={(event) => {
+        onKeyDown={event => {
           if (event.key === "Enter" || event.key === " ") {
             context.toggleSideMenu();
           }
@@ -111,6 +111,9 @@ const Navbar = () => {
         stroke="currentColor"
         className="size-8 block lg:hidden cursor-pointer text-gray-600 hover:text-blue-600 dark:text-gray-700"
         onClick={context.toggleSideMenu}
+        data-collapse-toggle="navbar-default" 
+        type="button"
+        aria-controls="navbar-default"
       >
         <path
           strokeLinecap="round"
@@ -183,7 +186,7 @@ const Navbar = () => {
             }
           }}
           tabIndex={0}
-          onKeyDown={(event) => {
+          onKeyDown={event => {
             if (event.key === "Enter" || event.key === " ") {
               if (isUserSignOut || !hasUserAnAccount) {
                 navigate("/sign-in");

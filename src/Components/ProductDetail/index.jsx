@@ -6,27 +6,19 @@ import "./styles.css";
 const ProductDetail = () => {
   const context = useContext(ShoppingCartContext);
 
-  const addProductToCartFromDetail = () => {
-    const isInCart = context.cartProducts.some(
-      (product) => product.id === context.productToShow.id
-    );
+  const isInCart = context.cartProducts.some(
+    product => product.id === context.productToShow.id
+  );
 
+  const addProductToCartFromDetail = () => {
     if (!isInCart) {
-      context.setCount(context.count + 1);
-      context.setCartProducts([
-        ...context.cartProducts,
-        context.productToShow,
-      ]);
+      context.setCartProducts([...context.cartProducts, context.productToShow,]);
     }
   };
 
   const removeProductFromCartFromDetail = () => {
     context.removeProductFromCart(context.productToShow.id);
   };
-
-  const isInCart = context.cartProducts.some(
-    (product) => product.id === context.productToShow.id
-  );
 
   return (
     <aside
@@ -42,13 +34,13 @@ const ProductDetail = () => {
         </h2>
         <XMarkIcon
           tabIndex={0}
-          onKeyDown={(event) => {
+          onKeyDown={event => {
             if (event.key === "Enter" || event.key === " ") {
               context.closeProductDetail();
             }
           }}
           className="h-7 w-7 bg-gray-600 rounded-2xl text-white cursor-pointer hover:text-blue-600 dark:bg-gray-700 dark:text-gray-300"
-          onClick={() => context.closeProductDetail()}
+          onClick={context.closeProductDetail}
         />
       </div>
       <div className="flex flex-col overflow-y-auto p-4">

@@ -15,18 +15,18 @@ const OrderCard = ({
   const [count, setCount] = useState(productCount);
 
   useEffect(() => {
-    const updatedCart = context.cartProducts.map((product) =>
+    const updatedCart = context.cartProducts.map(product =>
       product.id === id ? { ...product, count: count } : product
     );
     context.setCartProducts(updatedCart);
   }, [count]);
 
   const increaseProductCount = () => {
-    setCount((prevCount) => prevCount + 1);
+    setCount(prevCount => prevCount + 1);
   };
 
   const decreaseProductCount = () => {
-    setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
+    setCount(prevCount => (prevCount > 1 ? prevCount - 1 : 1));
   };
 
   let renderXMarkIcon;
@@ -34,7 +34,7 @@ const OrderCard = ({
     renderXMarkIcon = (
       <XMarkIcon
         tabIndex={0}
-        onKeyDown={(event) => {
+        onKeyDown={event => {
           if (event.key === "Enter" || event.key === " ") {
             handleDelete(id);
           }

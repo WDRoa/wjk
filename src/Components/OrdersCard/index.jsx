@@ -1,8 +1,6 @@
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 
-const OrdersCard = (props) => {
-  const { date, totalPrice, totalProducts } = props;
-
+const OrdersCard = ({ date, totalPrice, totalProducts }) => {
   const formattedDate = date
     ? new Date(date).toLocaleDateString("en-US", {
         day: "2-digit",
