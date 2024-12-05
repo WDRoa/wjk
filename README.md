@@ -1,6 +1,13 @@
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/bd71664c-b71c-4feb-97f6-43bcdd2d71b9" alt="WJK-logo">
+    <img src="https://github.com/user-attachments/assets/bd71664c-b71c-4feb-97f6-43bcdd2d71b9" alt="Logo">
     <br/>E-commerce or Virtual Store
+</p>
+
+<p align="center">
+    < --Preview-- > <br/>
+    <a href="https://67409c248f733cd15ae4c75b--wjk.netlify.app/" target="_blank">
+        <img src="./src/assets/preview.png" alt="Preview">
+    </a> 
 </p>
 
 Hello! 🙂 I am **Willie David Roa (WDRoa)** 😎, and I welcome you to the **WJK codebase**. 😊 A project initially created to be modeled in my professional portfolio, 😉 in order to help me get my first job as a software developer. 🙈
