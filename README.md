@@ -1,6 +1,8 @@
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/bd71664c-b71c-4feb-97f6-43bcdd2d71b9" alt="Logo">
-    <br/>E-commerce or Virtual Store
+    <a href="https://67409c248f733cd15ae4c75b--wjk.netlify.app/" target="_blank">
+        <img src="https://github.com/user-attachments/assets/bd71664c-b71c-4feb-97f6-43bcdd2d71b9" alt="Logo">
+        <br/>E-commerce or Virtual Store
+    </a> 
 </p>
 
 <p align="center">
