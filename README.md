@@ -7,7 +7,7 @@
 
 <p align="center">
     < --Preview-- > <br/>
-    <a href="https://67409c248f733cd15ae4c75b--wjk.netlify.app/" target="_blank">
+    <a href="https://wjk.netlify.app/" target="_blank">
         <img src="./src/assets/preview.png" alt="Preview">
     </a> 
 </p>
